@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=Ubuntusorter
+_Comment=Ubuntusorter application
+Categories=GNOME;Utility;
+Exec=ubuntusorter
+Icon=ubuntusorter
+Terminal=false
+Type=Application
