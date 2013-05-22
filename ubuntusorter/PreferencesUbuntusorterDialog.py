@@ -25,9 +25,15 @@ class PreferencesUbuntusorterDialog(PreferencesDialog):
         """Set up the preferences dialog"""
         super(PreferencesUbuntusorterDialog, self).finish_initializing(builder)
 
+
+        thelist = self.builder.get_object("liststore1")
+        thelist.insert(0,("hello1",))
+        thelist.insert(1,("hello2",))
+        thelist.insert(2,("hello3",))
+
         # Bind each preference widget to gsettings
-        settings = Gio.Settings("net.launchpad.ubuntusorter")
-        widget = self.builder.get_object('example_entry')
-        settings.bind("example", widget, "text", Gio.SettingsBindFlags.DEFAULT)
+        # settings = Gio.Settings("net.launchpad.ubuntusorter")
+        # widget = self.builder.get_object('example_entry')
+        # settings.bind("example", widget, "text", Gio.SettingsBindFlags.DEFAULT)
 
         # Code for other initialization actions should be added here.

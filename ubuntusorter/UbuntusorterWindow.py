@@ -24,5 +24,13 @@ class UbuntusorterWindow(Window):
         self.AboutDialog = AboutUbuntusorterDialog
         self.PreferencesDialog = PreferencesUbuntusorterDialog
 
+        self.preferenceButton = self.builder.get_object("preferencesbutton")
+	
+	def on_preferencesbutton_clicked(self, widget):
+		# Run the preferences dialog.    
+    	dia = PreferencesUbuntusorterDialog()
+    	dia.show()
+
+
         # Code for other initialization actions should be added here.
 
