@@ -64,8 +64,8 @@ class PreferencesUbuntusorterDialog(PreferencesDialog):
         index = self.folders.get_active()
         if index>=0:
             self.default_map.pop(self.default_folders[index],None)  # remove from map
-            self.default_folders.pop(index)                         # remove from the list of folders
             self.folders.remove(index)                              # remove from the dropdown display
+            self.default_folders.pop(index)                         # remove from the list of folders
             print "Folder ",index," Removed" 
         else:
             print "Nothing Selected to remove - display some sort of warning box"
@@ -79,7 +79,9 @@ class PreferencesUbuntusorterDialog(PreferencesDialog):
     def selected_folder(self, folder_extensions_store):
 
         folder_extensions_store.clear() # empty the store
-        extensions = self.default_map[self.folders.get_active_text()] # get the list of the extensions
+        text = self.folders.get_active_text()
+        if text is not None:
+            extensions = self.default_map[self.folders.get_active_text()] # get the list of the extensions
                                                                       # in the selected folder
-        for extension in extensions: 
-            self.thelist.append((extension,))   # add each extension to the store
+            for extension in extensions: 
+                self.thelist.append((extension,))   # add each extension to the store
