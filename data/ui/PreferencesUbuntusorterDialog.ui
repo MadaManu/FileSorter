@@ -2,15 +2,15 @@
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <!-- interface-requires preferences_ubuntusorter_dialog 1.0 -->
-  <object class="GtkListStore" id="liststore1">
+  <object class="GtkListStore" id="available_extensions">
     <columns>
-      <!-- column-name extension -->
+      <!-- column-name ext_available -->
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkListStore" id="liststore2">
+  <object class="GtkListStore" id="extensions">
     <columns>
-      <!-- column-name ext_available -->
+      <!-- column-name extension -->
       <column type="gchararray"/>
     </columns>
   </object>
@@ -107,17 +107,20 @@ toggle - actuall sort / preview sort (preview will just show what
               <object class="GtkGrid" id="grid1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">15</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">12</property>
                 <property name="row_spacing">12</property>
                 <property name="column_spacing">5</property>
                 <child>
                   <object class="GtkComboBoxText" id="folder_list">
+                    <property name="width_request">120</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_right">5</property>
                     <property name="margin_top">5</property>
                     <property name="entry_text_column">0</property>
                     <property name="id_column">1</property>
+                    <signal name="changed" handler="selected_folder" object="extensions" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -172,7 +175,7 @@ toggle - actuall sort / preview sort (preview will just show what
                         <property name="height_request">150</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="model">liststore1</property>
+                        <property name="model">extensions</property>
                         <property name="tooltip_column">0</property>
                         <child internal-child="selection">
                           <object class="GtkTreeSelection" id="treeview-selection1"/>
@@ -207,7 +210,7 @@ toggle - actuall sort / preview sort (preview will just show what
                     <property name="spacing">8</property>
                     <child>
                       <object class="GtkButton" id="add_ext_but">
-                        <property name="label" translatable="yes">Add Ext</property>
+                        <property name="label" translatable="yes">&lt;--</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">True</property>
@@ -221,7 +224,7 @@ toggle - actuall sort / preview sort (preview will just show what
                     </child>
                     <child>
                       <object class="GtkButton" id="del_ext_but">
-                        <property name="label" translatable="yes">Del Ext</property>
+                        <property name="label" translatable="yes">--&gt;</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="receives_default">True</property>
@@ -242,6 +245,7 @@ toggle - actuall sort / preview sort (preview will just show what
                 </child>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow2">
+                    <property name="width_request">165</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="shadow_type">in</property>
@@ -252,7 +256,7 @@ toggle - actuall sort / preview sort (preview will just show what
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="has_tooltip">True</property>
-                        <property name="model">liststore2</property>
+                        <property name="model">available_extensions</property>
                         <property name="headers_clickable">False</property>
                         <property name="search_column">0</property>
                         <property name="tooltip_column">0</property>
