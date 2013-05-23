@@ -25,6 +25,13 @@ class UbuntusorterWindow(Window):
         self.PreferencesDialog = PreferencesUbuntusorterDialog
 
         self.preferenceButton = self.builder.get_object("preferencesbutton")
+        self.statusBar = self.builder.get_object("statusbar")
+        self.statusBar.push(0,"Status Bar - display info")
+        self.statusBar.push(1,"madamanu")
+        self.statusBar.pop(1) # when pusing to status bar use number to count which is what... 
+        # when removing (pop) use the number to remove that... 
+        # statusBar in gtk is stack based
+        
 	
 	def on_preferencesbutton_clicked(self, widget):
 		# Run the preferences dialog.    
