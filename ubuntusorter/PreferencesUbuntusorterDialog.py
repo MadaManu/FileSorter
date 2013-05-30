@@ -45,6 +45,7 @@ class PreferencesUbuntusorterDialog(PreferencesDialog):
         # add default nothing to the extensions
         # maybe disable the tree 
         self.thelist = self.builder.get_object("extensions")
+        self.add_folder_dialog = self.builder.get_object("folder_add_name_dialog")
         self.thelist.insert(0,("No Folder",))
         self.thelist.insert(1,("selected",))
 
@@ -73,7 +74,23 @@ class PreferencesUbuntusorterDialog(PreferencesDialog):
     def on_folder_add_clicked(self, widget):
         # missing text input for the name of the folder - needs redesign or maybe
         #                                      use some dialog box to input name
+        self.add_folder_dialog.show()
         print "folder added"
+
+    def on_save_button_clicked(self, widget):
+        input_text = self.builder.get_object("folder_name_entry").get_text()
+        # check the validity of inputed text
+        # display error if any
+        # else are you sure question
+        # if yes save the new folder
+        # else revert to input again
+
+    def on_close_button_clicked(self, widget):
+        print "canceled!"
+        # clear buffer by adding a default text in
+        self.builder.get_object("newFolderBuffer").set_text("Folder Name",11)
+        self.add_folder_dialog.hide()
+
 
     # handler for changing the folder dropdown menu
     def selected_folder(self, folder_extensions_store):
